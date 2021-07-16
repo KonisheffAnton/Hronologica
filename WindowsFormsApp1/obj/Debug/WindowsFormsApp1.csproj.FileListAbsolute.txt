@@ -1,0 +1,11 @@
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\HronologicaForms.exe.config
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\HronologicaForms.exe
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\HronologicaForms.pdb
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\HronologicaForms.Properties.Resources.resources
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\HronologicaForms.exe
+C:\Users\Привет Антон\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\HronologicaForms.pdb
