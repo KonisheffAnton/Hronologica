@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HronologicaForms;
+using HronologicaForms.GameElements;
 
 namespace WindowsFormsApp1
 {
@@ -36,12 +37,17 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            
 
             Form1 newForm = new Form1(this);
             newForm.Owner = this;
             newForm.Show();
             this.Hide();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
