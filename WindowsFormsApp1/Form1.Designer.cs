@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             this.button3434 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button435345 = new System.Windows.Forms.Button();
+            this.MenueBtn = new System.Windows.Forms.Button();
             this.Card0 = new System.Windows.Forms.Button();
             this.Card1 = new System.Windows.Forms.Button();
             this.Card2 = new System.Windows.Forms.Button();
@@ -119,16 +119,16 @@ namespace WindowsFormsApp1
             this.textBox1.Size = new System.Drawing.Size(397, 155);
             this.textBox1.TabIndex = 7;
             // 
-            // button435345
+            // MenueBtn
             // 
-            this.button435345.Location = new System.Drawing.Point(955, 503);
-            this.button435345.Margin = new System.Windows.Forms.Padding(4);
-            this.button435345.Name = "button435345";
-            this.button435345.Size = new System.Drawing.Size(100, 28);
-            this.button435345.TabIndex = 8;
-            this.button435345.Text = "Выход";
-            this.button435345.UseVisualStyleBackColor = true;
-            this.button435345.Click += new System.EventHandler(this.button4_Click);
+            this.MenueBtn.Location = new System.Drawing.Point(955, 503);
+            this.MenueBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.MenueBtn.Name = "MenueBtn";
+            this.MenueBtn.Size = new System.Drawing.Size(100, 28);
+            this.MenueBtn.TabIndex = 8;
+            this.MenueBtn.Text = "Меню";
+            this.MenueBtn.UseVisualStyleBackColor = true;
+            this.MenueBtn.Click += new System.EventHandler(this.button4_Click);
             // 
             // Card0
             // 
@@ -238,7 +238,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.Card2);
             this.Controls.Add(this.Card1);
             this.Controls.Add(this.Card0);
-            this.Controls.Add(this.button435345);
+            this.Controls.Add(this.MenueBtn);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button3434);
@@ -263,7 +263,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button3434;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button435345;
+        private System.Windows.Forms.Button MenueBtn;
         private System.Windows.Forms.Button Card0;
         private System.Windows.Forms.Button Card1;
         private System.Windows.Forms.Button Card2;

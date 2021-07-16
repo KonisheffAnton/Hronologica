@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1;
 using HronologicaForms.GameElements;
 using HronologicaForms;
+using static Program;
 
 namespace WindowsFormsApp1
 {
@@ -20,12 +21,24 @@ namespace WindowsFormsApp1
     {
         Game NewGame = new Game();
 
-        public Form1(Form2 form2)
+        public MainMenue MainMenue { get; }
+       
+        
+        public Form1()
         {
             InitializeComponent();
-            
+            MethodHandler.FormClose = new MethodHandler.voidDelegator(FormClose);
         }
 
+        public Form1(MainMenue mainMenue)
+        {
+            MainMenue = mainMenue;
+        }
+
+        void FormClose()
+        {
+            this.Close();
+        }
 
         void FullTable(List<Player> innerHand, List<Card> table)
         {
@@ -134,7 +147,7 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            MethodHandler.FormShow();
         }
 
         private void button5_Click(object sender, EventArgs e)

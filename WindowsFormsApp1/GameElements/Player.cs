@@ -13,18 +13,13 @@ namespace HronologicaForms
 
         public List<Card> hand { get; set; } = new List<Card>();
 
-
-
-
         public void PickCard(Card NewCard)
         {
-            
                 this.hand.Add(NewCard);
-
             }
+
         public void DumpCard(int CurrentCursor)
         {
-
             this.hand.RemoveAt(CurrentCursor);
 
         }
