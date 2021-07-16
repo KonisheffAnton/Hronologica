@@ -66,14 +66,24 @@ namespace WindowsFormsApp1
             //Инициализация игроков
             for (int i = 0; i < NewGame.PlayerCount; i++)
             {
-                var Player = new Player(NewGame.stackQ, i, NewGame.rnd);
+                var Player = new Player();
                 NewGame.playerList.Add(Player);
+
+                //Раздача начальных карт
+                for (int j = 0; j<6; j++)
+                {
+                    NewGame.playerList[i].PickCard(NewGame.GamePickCard());
+                }
             }
+
+            
+
+
             //Дабавление начальной карты
-            NewGame.cardId = NewGame.rnd.Next(0, NewGame.stackQ.Count-1);
-            NewGame.table.Add(NewGame.stackQ[NewGame.cardId]);
-            NewGame.StarterCard = NewGame.stackQ[NewGame.cardId];
-            NewGame.stackQ.Remove(NewGame.stackQ[NewGame.cardId]);
+            
+            NewGame.table.Add(NewGame.GamePickCard());
+            NewGame.StarterCard = NewGame.table[0];
+            
 
             
             FullTable(NewGame.playerList, NewGame.table);
@@ -87,15 +97,16 @@ namespace WindowsFormsApp1
             if (NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].id < NewGame.StarterCard.id)
             {
                 NewGame.table.Insert(0, NewGame.playerList[NewGame.turn].hand[NewGame.Сursor]);
-                NewGame.playerList[NewGame.turn].hand.RemoveAt(NewGame.Сursor);
+                NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
         
 
 
             }
             else {
-                NewGame.playerList[NewGame.turn].hand.RemoveAt(NewGame.Сursor);
-                NewGame.playerList[NewGame.turn].PickCard(NewGame.stackQ, NewGame.rnd);
-                
+                NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
+                NewGame.playerList[NewGame.turn].PickCard(NewGame.GamePickCard());
+
+
 
             }
             if (NewGame.turn < NewGame.playerList.Count-1) { NewGame.turn++; } else { NewGame.turn = 0; };
@@ -136,15 +147,15 @@ namespace WindowsFormsApp1
         {
             if (NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].id >= NewGame.StarterCard.id)
             {
-                NewGame.table.Insert(NewGame.table.Count, NewGame.playerList[NewGame.turn].hand[NewGame.Сursor]);
-                NewGame.playerList[NewGame.turn].hand.RemoveAt(NewGame.Сursor);
 
+                NewGame.table.Insert(NewGame.table.Count, NewGame.playerList[NewGame.turn].hand[NewGame.Сursor]);
+                NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
 
             }
             else
             {
-                NewGame.playerList[NewGame.turn].hand.RemoveAt(NewGame.Сursor);
-                NewGame.playerList[NewGame.turn].PickCard(NewGame.stackQ, NewGame.rnd);
+                NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
+                NewGame.playerList[NewGame.turn].PickCard(NewGame.GamePickCard());
 
             }
             if (NewGame.turn < NewGame.playerList.Count - 1) { NewGame.turn++; } else { NewGame.turn = 0; };

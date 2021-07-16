@@ -15,24 +15,19 @@ namespace HronologicaForms
 
 
 
-        public Player(List<Card> stackQ, int innerid, Random rnd)
-        {
-            this.id = innerid;
-            for (int i = 0; i < 6; i++)
-            {
-                this.PickCard(stackQ, rnd);
-            }
-        }
 
-        public void PickCard(List<Card> stackQ, Random rnd)
+        public void PickCard(Card NewCard)
         {
-            int cardId;
-            if (stackQ.Count > 0)
-            {
-                cardId = rnd.Next(0, stackQ.Count - 1);
-                this.hand.Add(stackQ[cardId]);
-                stackQ.Remove(stackQ[cardId]);
+            
+                this.hand.Add(NewCard);
+
             }
+        public void DumpCard(int CurrentCursor)
+        {
+
+            this.hand.RemoveAt(CurrentCursor);
+
         }
     }
+    
 }

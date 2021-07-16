@@ -20,6 +20,19 @@ namespace HronologicaForms
         public int cardId { get; set; } = 0;
         public int turn { get; set; } = 0;
         public int PlayerCount { get; set; } = 2;
+
+        public Card GamePickCard()
+        {
+            int cardId;
+            Card CurrentCard = new Card();
+            if (this.stackQ.Count > 0)
+            {
+                cardId = rnd.Next(0, stackQ.Count - 1);
+                CurrentCard = this.stackQ[cardId];
+                this.stackQ.Remove(this.stackQ[cardId]);
+            }
+            return CurrentCard; 
+        }
         
     }
 }
