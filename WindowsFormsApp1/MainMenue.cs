@@ -30,7 +30,7 @@ namespace HronologicaForms
         }
         void FormShow()
         {
-            this.Show();
+            this.ShowDialog();
         }
         private void button1_Click(object sender, EventArgs e)
         {
