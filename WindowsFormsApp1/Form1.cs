@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
             
             for (int i = 0; i < table.Count; i++)
             {
+                sb.Clear();
                 textBox1.Text += sb.Append($"Событие {table[i].innerText}") + Environment.NewLine;
                 sb.Clear();
             }
@@ -57,15 +58,16 @@ namespace WindowsFormsApp1
                 Controls["Card" + i.ToString()].Text = Convert.ToString(sb);
                 sb.Clear();
             }
+
             for (int i = 0; i < innerHand[NewGame.turn].hand.Count; i++)
             {
                 Controls["Card" + i.ToString()].Text = Convert.ToString(sb.Append(innerHand[NewGame.turn].hand[i].innerText));
                 sb.Clear();
             }
-            
+            CheckCardInHand(NewGame.Сursor);
             label2.Text = Convert.ToString(sb.Append("Карт в колоде " + Convert.ToString(NewGame.stackQ.Count)));
             sb.Clear();
-            label1.Text = Convert.ToString(sb.Append($"Событие {NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].innerText}"));
+            //label1.Text = Convert.ToString(sb.Append($"Событие {NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].innerText}"));
             sb.Clear();
             label3.Text = Convert.ToString(sb.Append($"Игрок {NewGame.turn + 1}"));
             sb.Clear();
@@ -73,10 +75,10 @@ namespace WindowsFormsApp1
 
         void CheckCardInHand(int Сursor)
         {
-
-            label1.Text = "Событие " + NewGame.playerList[NewGame.turn].hand[Сursor].innerText +
-                " произошло раньше события " + NewGame.StarterCard.innerText + " ?";
-            
+            sb.Clear();
+            label1.Text = Convert.ToString(sb.Append("Событие " + NewGame.playerList[NewGame.turn].hand[Сursor].innerText +
+                " произошло раньше события " + NewGame.StarterCard.innerText + " ?"));
+            sb.Clear();
 
         }
 
@@ -122,7 +124,12 @@ namespace WindowsFormsApp1
             {
                 NewGame.table.Insert(0, NewGame.playerList[NewGame.turn].hand[NewGame.Сursor]);
                 NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
-        
+               
+                if (NewGame.playerList[NewGame.turn].hand.Count == 0)
+                {
+                    MessageBox.Show($"Игрок {NewGame.turn+1} выйграл!");
+                    MethodHandler.FormShow();
+                }
 
 
             }
@@ -141,18 +148,13 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox2.Text = NewGame.playerList[NewGame.turn].id + " количесвто карт "+ NewGame.playerList[NewGame.turn].hand.Count;//table[i].innerText + Environment.NewLine;
+            textBox2.Text = ($"turn {NewGame.turn} {NewGame.playerList[NewGame.turn].id} количесвто карт {NewGame.playerList[NewGame.turn].hand.Count}");//table[i].innerText + Environment.NewLine;
             for (int i = 0; i < NewGame.playerList[NewGame.turn].hand.Count; i++)
             {
                 textBox2.Text += " nomer sobitiya "+ NewGame.playerList[NewGame.turn].hand[i].id+" текст " + NewGame.playerList[NewGame.turn].hand[i].innerText+ " ";
             }
 
-            textBox2.Text += " nomer sobitiya на столе " +Environment.NewLine;
-
-            for (int i = 0; i < NewGame.table.Count; i++)
-            {
-                textBox2.Text += "nomer sobitiya na stole" + NewGame.table[i].id + " текст na stole" + NewGame.table[i].innerText + " ";
-            }
+          
             textBox2.Text +=Environment.NewLine;
         }
 
@@ -174,6 +176,11 @@ namespace WindowsFormsApp1
 
                 NewGame.table.Insert(NewGame.table.Count, NewGame.playerList[NewGame.turn].hand[NewGame.Сursor]);
                 NewGame.playerList[NewGame.turn].DumpCard(NewGame.Сursor);
+                if (NewGame.playerList[NewGame.turn].hand.Count == 0)
+                {
+                    MessageBox.Show($"Игрок {NewGame.turn+1} выйграл!");
+                    MethodHandler.FormShow();
+                }
 
             }
             else
