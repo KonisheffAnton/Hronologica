@@ -22,7 +22,6 @@ namespace HronologicaForms
         public int cardId { get; set; } = 0;
         public int turn { get; set; } = 0;
         public int PlayerCount { get; set; } = MethodHandler.EventHandler();
-
         public Card GamePickCard()
         {
             int cardId;
@@ -35,6 +34,7 @@ namespace HronologicaForms
             }
             return CurrentCard; 
         }
-        
+
+
     }
 }

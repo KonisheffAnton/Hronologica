@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         Game NewGame = new Game();
-
+        StringBuilder sb = new StringBuilder("");
         public MainMenue MainMenue { get; }
        
         
@@ -28,7 +28,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             MethodHandler.FormClose = new MethodHandler.voidDelegator(FormClose);
-        }
+            
+    }
 
         public Form1(MainMenue mainMenue)
         {
@@ -43,20 +44,31 @@ namespace WindowsFormsApp1
         void FullTable(List<Player> innerHand, List<Card> table)
         {
             textBox1.Clear();
+            
             for (int i = 0; i < table.Count; i++)
             {
-                textBox1.Text += "Событие "+table[i].innerText + Environment.NewLine;
+                textBox1.Text += sb.Append($"Событие {table[i].innerText}") + Environment.NewLine;
+                sb.Clear();
             }
+            
             for (int i = 0; i < 6; i++)
             {
-                Controls["Card" + i.ToString()].Text = "";
+
+                Controls["Card" + i.ToString()].Text = Convert.ToString(sb);
+                sb.Clear();
             }
             for (int i = 0; i < innerHand[NewGame.turn].hand.Count; i++)
             {
-                Controls["Card" + i.ToString()].Text = innerHand[NewGame.turn].hand[i].innerText;
+                Controls["Card" + i.ToString()].Text = Convert.ToString(sb.Append(innerHand[NewGame.turn].hand[i].innerText));
+                sb.Clear();
             }
-            label2.Text = "";
-            label2.Text += "Карт в колоде " + Convert.ToString(NewGame.stackQ.Count);
+            
+            label2.Text = Convert.ToString(sb.Append("Карт в колоде " + Convert.ToString(NewGame.stackQ.Count)));
+            sb.Clear();
+            label1.Text = Convert.ToString(sb.Append($"Событие {NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].innerText}"));
+            sb.Clear();
+            label3.Text = Convert.ToString(sb.Append($"Игрок {NewGame.turn + 1}"));
+            sb.Clear();
         }
 
         void CheckCardInHand(int Сursor)
@@ -100,8 +112,7 @@ namespace WindowsFormsApp1
 
             
             FullTable(NewGame.playerList, NewGame.table);
-            label1.Text = "Событие "+ NewGame.playerList[NewGame.turn].hand[NewGame.Сursor].innerText;
-            label3.Text = "Игрок "+Convert.ToString(NewGame.turn + 1);
+            
         }
 
 
@@ -125,7 +136,7 @@ namespace WindowsFormsApp1
             if (NewGame.turn < NewGame.playerList.Count-1) { NewGame.turn++; } else { NewGame.turn = 0; };
             FullTable(NewGame.playerList, NewGame.table);
             NewGame.Сursor = 0;
-            label3.Text = "Игрок " + Convert.ToString(NewGame.turn + 1);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -140,7 +151,7 @@ namespace WindowsFormsApp1
 
             for (int i = 0; i < NewGame.table.Count; i++)
             {
-                textBox2.Text += "Igrok lubit pisi nomer sobitiya na stole" + NewGame.table[i].id + " текст na stole" + NewGame.table[i].innerText + " ";
+                textBox2.Text += "nomer sobitiya na stole" + NewGame.table[i].id + " текст na stole" + NewGame.table[i].innerText + " ";
             }
             textBox2.Text +=Environment.NewLine;
         }
@@ -174,7 +185,7 @@ namespace WindowsFormsApp1
             if (NewGame.turn < NewGame.playerList.Count - 1) { NewGame.turn++; } else { NewGame.turn = 0; };
             FullTable(NewGame.playerList, NewGame.table);
             NewGame.Сursor = 0;
-            label3.Text = "Игрок " + Convert.ToString(NewGame.turn + 1);
+          
         
     }
 
