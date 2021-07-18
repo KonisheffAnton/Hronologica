@@ -75,10 +75,10 @@ namespace WindowsFormsApp1
 
         void CheckCardInHand(int Сursor)
         {
-            sb.Clear();
-            label1.Text = Convert.ToString(sb.Append("Событие " + NewGame.playerList[NewGame.turn].hand[Сursor].innerText +
-                " произошло раньше события " + NewGame.StarterCard.innerText + " ?"));
-            sb.Clear();
+            
+            label1.Text = ("Событие " + NewGame.playerList[NewGame.turn].hand[Сursor].innerText +
+                " произошло раньше события " + NewGame.StarterCard.innerText + " ?");
+           
 
         }
 
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
             //Инициализация игроков
             for (int i = 0; i < NewGame.PlayerCount; i++)
             {
-                var Player = new Player();
+                var Player = new Player(i);
                 NewGame.playerList.Add(Player);
 
                 //Раздача начальных карт
@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
             
 
             
-            FullTable(NewGame.playerList, NewGame.table);
+           FullTable(NewGame.playerList, NewGame.table);
             
         }
 
@@ -140,21 +140,25 @@ namespace WindowsFormsApp1
 
 
             }
-            if (NewGame.turn < NewGame.playerList.Count-1) { NewGame.turn++; } else { NewGame.turn = 0; };
-            FullTable(NewGame.playerList, NewGame.table);
+            if (NewGame.turn == NewGame.playerList.Count-1) { NewGame.turn=0; } else { NewGame.turn++; };
             NewGame.Сursor = 0;
+            FullTable(NewGame.playerList, NewGame.table);
+            
             
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox2.Text = ($"turn {NewGame.turn} {NewGame.playerList[NewGame.turn].id} количесвто карт {NewGame.playerList[NewGame.turn].hand.Count}");//table[i].innerText + Environment.NewLine;
-            for (int i = 0; i < NewGame.playerList[NewGame.turn].hand.Count; i++)
+            textBox2.Text = ($"turn {NewGame.turn} игрок {NewGame.playerList[0].id} игрок {NewGame.playerList[1].id} количесвто карт {NewGame.playerList[NewGame.turn].hand.Count}") + Environment.NewLine+ ($"turn {NewGame.turn} {NewGame.playerList[0].id} количесвто карт {NewGame.playerList[NewGame.turn].hand.Count}" + Environment.NewLine);
+            for (int i = 0; i < NewGame.playerList[0].hand.Count; i++)
             {
-                textBox2.Text += " nomer sobitiya "+ NewGame.playerList[NewGame.turn].hand[i].id+" текст " + NewGame.playerList[NewGame.turn].hand[i].innerText+ " ";
+                textBox2.Text += " nomer sobitiya "+ NewGame.playerList[0].hand[i].id+" текст " + NewGame.playerList[NewGame.turn].hand[i].innerText+ " ";
             }
-
-          
+            textBox2.Text += Environment.NewLine;
+            for (int i = 0; i < NewGame.playerList[1].hand.Count; i++)
+            {
+                textBox2.Text += " nomer sobitiya " + NewGame.playerList[NewGame.turn].hand[i].id + " текст " + NewGame.playerList[NewGame.turn].hand[i].innerText + " ";
+            }
             textBox2.Text +=Environment.NewLine;
         }
 
@@ -189,9 +193,10 @@ namespace WindowsFormsApp1
                 NewGame.playerList[NewGame.turn].PickCard(NewGame.GamePickCard());
 
             }
-            if (NewGame.turn < NewGame.playerList.Count - 1) { NewGame.turn++; } else { NewGame.turn = 0; };
-            FullTable(NewGame.playerList, NewGame.table);
+            if (NewGame.turn == NewGame.playerList.Count - 1) { NewGame.turn = 0; } else { NewGame.turn++; };
             NewGame.Сursor = 0;
+            FullTable(NewGame.playerList, NewGame.table);
+            
           
         
     }

@@ -9,10 +9,13 @@ namespace HronologicaForms
 {
    public class Player
     {
-        public readonly int id;
+        public int id { get; set; }
 
         public List<Card> hand { get; set; } = new List<Card>();
-
+        internal protected Player(int id)
+        {
+            this.id = id;
+        }
         public void PickCard(Card NewCard)
         {
                 this.hand.Add(NewCard);
